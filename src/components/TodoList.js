@@ -6,11 +6,14 @@ import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 
 
 //COMPONENTS
 import Todo from './Todo';
+import { Grid } from '@mui/material';
 
 export default function TodoList() {
   return (
@@ -18,7 +21,7 @@ export default function TodoList() {
       <Container maxWidth="sm" style={{textAlign:"center"}}>
         <Card sx={{ minWidth: 275 }}>
             <CardContent>
-                <Typography variant = "h2"> مهامي </Typography>
+                <Typography variant = "h3" style={{fontWeight:"bold"}}> مهامي </Typography>
 
                 <Divider/>
 
@@ -39,9 +42,31 @@ export default function TodoList() {
 
                 {/*ALL TODOS */}
                 <Todo/>
-                <Todo/>
-                <Todo/>
                 {/* === ALLTODOS === */}
+
+                {/*INPUT + ADD BUTTON*/}
+
+                <Grid container spacing={2} style={{marginTop:"30px"}}>
+                    <Grid
+                    size={8}
+                    display="flex" justifyContent="space-around" alignItems="center"
+                    >
+                        <TextField
+                        style={{width:"100%"}}
+                        id="outlined-basic"
+                        label="عنوان المهمة"
+                        variant="outlined" />
+                    </Grid>
+
+                    <Grid
+                    size={4}
+                    display="flex" justifyContent="space-around" alignItems="center"
+                    >
+                        <Button variant="contained" style={{width:"100%" , height:"100%"}}>اضافة</Button>
+                    </Grid>
+
+                </Grid>
+                {/* ==== INPUT + ADD BUTTON ==== */}
 
             </CardContent>
         </Card>

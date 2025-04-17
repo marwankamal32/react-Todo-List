@@ -27,12 +27,12 @@ export default function Todo(){
                     <Grid size={4} display="flex" justifyContent="space-around" alignItems="center">
 
                         <IconButton 
-                        className="iconButton" aria-label="delete" style={{color:"#49A950", background:"white",border:"solid #49A950 3px",}}>
+                        className="iconButton" aria-label="check" style={{color:"#49A950", background:"white",border:"solid #49A950 3px",}}>
                             <CheckIcon />
                         </IconButton>
 
                         <IconButton 
-                        className="iconButton" aria-label="delete" style={{color:"#122733", background:"white",border:"solid #122733 3px",}}>
+                        className="iconButton" aria-label="edit" style={{color:"#808080", background:"white",border:"solid #808080 3px",}}>
                             <ModeEditOutlineOutlinedIcon />
                         </IconButton>
 
