@@ -51,6 +51,14 @@ export default function TodoList() {
     });
     const[titleInput , setTitleInput] = useState("");
     const [detailsInput, setDetailsInput] = useState("");
+    const [filter, setFilter] = useState("all");
+
+
+    const filteredTodos = todos.filter((todo) => {
+        if (filter === "completed") return todo.isCompleted;
+        if (filter === "uncompleted") return !todo.isCompleted;
+        return true;
+      });
 
     useEffect(() => {
         const storedTodos = localStorage.getItem("todos");
@@ -63,7 +71,7 @@ export default function TodoList() {
         localStorage.setItem("todos", JSON.stringify(todos));
         }, [todos]);
 
-    const todosJsx = todos.map((t)=> {
+    const todosJsx = filteredTodos.map((t)=> {
         return <Todo
          key = {t.id}
          title={t.title}
@@ -130,15 +138,17 @@ export default function TodoList() {
 
                 {/* FILLTER BUTTONS */}
                 <ToggleButtonGroup
-                style={{direction:"ltr" , marginTop :"30px"}}
-                    //value={formats}
+                    value={filter}
+                    style={{direction:"ltr" , marginTop :"30px"}}
                     exclusive
-                    //onChange={handleFormat}
+                    onChange={(e, newFilter) => {
+                        if (newFilter !== null) setFilter(newFilter);
+                    }}
                     aria-label="text formatting"
                 >
-                    <ToggleButton value="right">غير المنجز</ToggleButton>
-                    <ToggleButton value="center">المنجز</ToggleButton>
-                    <ToggleButton value="left">الكل</ToggleButton>
+                    <ToggleButton value="uncompleted">غير المنجز</ToggleButton>
+                    <ToggleButton value="completed">المنجز</ToggleButton>
+                    <ToggleButton value="all">الكل</ToggleButton>
                 </ToggleButtonGroup>
 
                 {/* === FILLTER BUTTONS === */}
